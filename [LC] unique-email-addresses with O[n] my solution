@@ -1,0 +1,26 @@
+class Solution {
+    public int numUniqueEmails(String[] emails) {
+        Set<String> uniqueEmails = new HashSet<>();
+        for(int i=0;i<emails.length;i++){
+            String email = emails[i];
+            String[] parts=email.split("@");
+            String local = parts[0];
+            String domain = parts[1];
+            int index=local.indexOf('+');
+            if(index!=-1){
+              local=local.substring(0,index);
+              local=local.replaceAll("\\.","");
+              String cleanedEmail = local + "@"+ domain;
+              uniqueEmails.add(cleanedEmail);
+            }
+            else{
+                local=local.replaceAll("\\.","");
+                String cleanedEmail = local +"@"+ domain;
+                uniqueEmails.add(cleanedEmail); 
+            }
+        }
+        return uniqueEmails.size();
+    }
+}
+
+Problem statement: https://leetcode.com/problems/unique-email-addresses/description/
