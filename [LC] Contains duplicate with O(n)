@@ -10,3 +10,6 @@ class Solution {
         return false;
     }
 }
+
+Problem statement:: https://leetcode.com/problems/contains-duplicate/description/
+
