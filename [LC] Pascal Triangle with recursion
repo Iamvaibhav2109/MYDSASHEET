@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<>();
+        generateRow(result, numRows, 0);
+        return result;
+    }
+
+    private void generateRow(List<List<Integer>> result, int numRows, int currentRow) {
+        if (currentRow == numRows) {
+            return;
+        }
+
+        List<Integer> row = new ArrayList<>();
+        for (int i = 0; i <= currentRow; i++) {
+            if (i == 0 || i == currentRow) {
+                row.add(1);
+            } else {
+                row.add(result.get(currentRow - 1).get(i - 1) + result.get(currentRow - 1).get(i));
+            }
+        }
+
+        result.add(row);
+        generateRow(result, numRows, currentRow + 1);
+    }
+}
