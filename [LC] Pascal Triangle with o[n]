@@ -1,0 +1,21 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result= new ArrayList<>();
+        for(int i=0;i<numRows;i++){
+           List<Integer> innerResult1=new ArrayList<>();
+           for(int j=0;j<=i;j++){
+            if(j==0 || j==i){
+                innerResult1.add(1);
+            }
+            else{
+              innerResult1.add(result.get(i-1).get(j-1)+result.get(i-1).get(j));  
+            }
+           }
+           result.add(innerResult1);
+        }
+        return result;
+    }
+}
+
+
+Problem statement:: https://leetcode.com/problems/pascals-triangle/description/
