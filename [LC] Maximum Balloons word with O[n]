@@ -1,0 +1,27 @@
+class Solution {
+    public int maxNumberOfBalloons(String text) {
+        Map<Character, Integer> map=new HashMap<>();
+        int n=text.length();
+        int ltextcount=0;
+        int otextcount=0;
+        int btext=0;
+        int atext=0;
+        int ntext=0;
+        for (char c:text.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        if(!map.containsKey('o') || !map.containsKey('l') || !map.containsKey('b') ||
+        !map.containsKey('a') || !map.containsKey('n')){
+            return 0;
+        }
+        else{
+         ltextcount=map.get('l')/2;
+         otextcount=map.get('o')/2;
+         btext=map.get('b');
+         atext=map.get('a');
+         ntext=map.get('n');
+        }
+        return Math.min(btext, Math.min(atext, Math.min(ltextcount, Math.min(otextcount, ntext))));
+    }
+}
+Problem statement:: https://leetcode.com/problems/maximum-number-of-balloons/description/
