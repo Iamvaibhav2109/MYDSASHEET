@@ -1,0 +1,28 @@
+class Solution {
+    public int countCharacters(String[] words, String chars) {
+        int len=words.length;
+        int result=0;
+        Map<Character,Integer> map=new HashMap<>();
+        for(char c: chars.toCharArray()){
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+        for(String word : words){
+           boolean flag = true; 
+          Map<Character, Integer> wordCount = new HashMap<>();
+            for (char c : word.toCharArray()) {
+                wordCount.put(c, wordCount.getOrDefault(c, 0) + 1);
+            }
+            for (char c : wordCount.keySet()) {
+                if (!map.containsKey(c) || wordCount.get(c) > map.get(c)) {
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                result+=word.length();
+            }
+        }
+        return result;
+    }
+}
+Problem statement:: https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/description/
