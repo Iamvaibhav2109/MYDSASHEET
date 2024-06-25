@@ -1,0 +1,27 @@
+class Solution {
+    public int maxProductDifference(int[] nums) {
+        int firstMaxElement = Integer.MIN_VALUE;
+        int secondMaxElement = Integer.MIN_VALUE;
+        int firstMinElement = Integer.MAX_VALUE;
+        int secondMinElement = Integer.MAX_VALUE;
+        
+        for (int i=0;i<nums.length;i++) {
+            if (nums[i]>firstMaxElement) {
+                secondMaxElement=firstMaxElement;
+                firstMaxElement=nums[i];
+            } else if (nums[i]>secondMaxElement) {
+                secondMaxElement=nums[i];
+            }
+
+            if (nums[i]<firstMinElement) {
+                secondMinElement=firstMinElement;
+                firstMinElement=nums[i];
+            } else if (nums[i]<secondMinElement) {
+                secondMinElement=nums[i];
+            }
+        }
+        return (firstMaxElement * secondMaxElement) - (firstMinElement * secondMinElement);
+    }
+}
+
+Problem statement:: https://leetcode.com/problems/maximum-product-difference-between-two-pairs/description/
