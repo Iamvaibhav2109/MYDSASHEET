@@ -1,0 +1,20 @@
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<List<Integer>>result=new ArrayList<>();
+        for(int i=0;i<=rowIndex;i++){
+            List<Integer>innerResult=new ArrayList<>();
+            for(int j=0;j<=i;j++){
+                if(j==0 || j==i){
+                   innerResult.add(1);
+                }
+                else{
+                    innerResult.add(result.get(i-1).get(j-1)+result.get(i-1).get(j));
+                }
+              }
+                result.add(innerResult);
+        }
+        return result.get(rowIndex);
+    }
+}
+
+https://leetcode.com/problems/pascals-triangle-ii/description/
