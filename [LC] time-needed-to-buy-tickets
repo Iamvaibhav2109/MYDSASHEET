@@ -1,0 +1,22 @@
+class Solution {
+    public int timeRequiredToBuy(int[] tickets, int k) {
+        int totaltimetaken=0;
+        int i=0;
+        while(true){
+            if(tickets[k]==0){
+                break;
+            }
+            if(tickets[i]>0){
+               tickets[i]--;
+               totaltimetaken++;
+            }
+            if(i==tickets.length-1)
+                    i=0;
+               else     
+                    i++;
+        }
+        return totaltimetaken;
+    }
+}
+
+Problem statement: https://leetcode.com/problems/time-needed-to-buy-tickets/description/
