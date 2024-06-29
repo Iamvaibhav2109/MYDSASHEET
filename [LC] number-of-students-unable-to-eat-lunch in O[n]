@@ -1,0 +1,24 @@
+class Solution {
+    public int countStudents(int[] students, int[] sandwiches) {
+        Queue<Integer> studentQueue=new LinkedList<>();
+        for (int student:students) {
+            studentQueue.add(student);
+        }
+        int i=0;
+        int loopCount=0;
+        
+        while (!studentQueue.isEmpty()&&loopCount<studentQueue.size()) {
+            if (studentQueue.peek()==sandwiches[i]) {
+                studentQueue.poll();
+                i++;
+                loopCount=0;
+            } else {
+                int temp=studentQueue.poll();
+                studentQueue.add(temp);
+                loopCount++;
+            }
+        }
+        return studentQueue.size();
+    }
+}
+Problem statement: https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/description/
