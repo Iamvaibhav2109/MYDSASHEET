@@ -1,7 +1,7 @@
 class Solution {
     public boolean isHappy(int n) {
         long div=0;
-        while(n!=1 && n!=4){
+        while(n>9){
             long num=n;
             long sum=0;
             while(num>0){
@@ -11,6 +11,6 @@ class Solution {
             }
             n=(int)sum; 
           }
-        return n==1;
+        return n==1 || n==7;
         }
     }
