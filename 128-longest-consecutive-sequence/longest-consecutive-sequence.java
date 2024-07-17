@@ -8,19 +8,18 @@ class Solution {
             numSet.add(num);
         }
         int longestStreak = 0;
-        for (int num : numSet) {
-            if (!numSet.contains(num - 1)) {
-                int currentNum = num;
-                int currentStreak = 1;
-                while (numSet.contains(currentNum + 1)) {
-                    currentNum += 1;
-                    currentStreak += 1;
+        int  count=1;
+        for(int num:nums){
+            if(!numSet.contains(num-1)){
+                int x=num;
+                count=1;
+                while(numSet.contains(x+1)){
+                    count++;
+                    x++;
                 }
-
-                longestStreak = Math.max(longestStreak, currentStreak);
             }
+            longestStreak=Math.max(longestStreak,count);
         }
-
         return longestStreak;
     }
 }
