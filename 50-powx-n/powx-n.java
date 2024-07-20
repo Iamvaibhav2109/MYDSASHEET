@@ -1,22 +1,30 @@
 class Solution {
     public double myPow(double x, int n) {
-        double result=1.0;
-        if(x==1 || (x==-1 && n>0)){
-            return x;
-        }
-        if(x==-1 && n==Integer.MIN_VALUE){
-            return -x;
-        }
-        if(n==Integer.MIN_VALUE){
+         if (x == 0) {
             return 0;
         }
-        while(n>0){
-           result*=x;
-           n--;
+        if (n == 0) {
+            return 1;
         }
-        while(n<0){
-            result*=1/x;
-            n++;
+        if (x == 1) {
+            return 1;
+        }
+        if (x == -1) {
+            return (n % 2 ==0)?1:-1;
+        }
+        long N = n;
+        if (N<0) {
+            x = 1 / x;
+            N = -N;
+        }
+        double result = 1.0;
+        double currentProduct = x;
+        while (N > 0) {
+            if (N % 2 == 1) {
+                result *= currentProduct;
+            }
+            currentProduct *= currentProduct;
+            N /= 2;
         }
         return result;
     }
