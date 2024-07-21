@@ -17,3 +17,16 @@ class Solution {
         return maxLen;
     }
 }
+//end = 0:
+
+//ch = 'a'
+//'a' is not in charIndexMap.
+//Update charIndexMap to {'a': 0}.
+//Update maxLen to max(0, 0 - 0 + 1) = 1.
+
+//end = 3:
+//ch = 'a'
+//'a' is in charIndexMap, with the last occurrence at index 0.
+//Update start to max(0, 0 + 1) = 1.
+//Update charIndexMap to {'a': 3, 'b': 1, 'c': 2}.
+//Update maxLen to max(3, 3 - 1 + 1) = 3.
