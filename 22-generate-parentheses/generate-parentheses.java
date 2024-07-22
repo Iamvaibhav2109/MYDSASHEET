@@ -5,7 +5,7 @@ class Solution {
         return result;
     }
     public void generateParenthesesHelper(List<String>result,String current,int open,int close,int num){
-        if (current.length() == num * 2) {
+        if (current.length() == num*2) {
             result.add(current);
             return;
         }
