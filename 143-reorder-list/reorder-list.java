@@ -10,12 +10,14 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
+
          ListNode fast = head;
          ListNode slow = head ;
          while(fast!=null && fast.next!=null){
              slow = slow.next ;
              fast = fast.next.next;
-         }
+         }//Finding middle of the linklist
+
          fast = slow.next;
          slow.next =null;
          ListNode prev = null;
@@ -25,7 +27,7 @@ class Solution {
              fast.next = prev;
              prev = fast;
              fast = next ;
-         }
+         }//reversing second half of the linklist
          slow =head;
          while(slow!=null && prev!=null){
              ListNode temp1 = slow.next;
@@ -34,6 +36,6 @@ class Solution {
              prev.next=temp1;
              slow = prev.next;
              prev = temp2;
-         }
+         }//Merge the both halves
     }
 }
