@@ -10,25 +10,35 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-       List <Integer> x=new ArrayList<>();
-       for(int i=0;i<lists.length;i++)
-       {
-        ListNode temp=lists[i];
-        while(temp!=null)
-        {
-            x.add(temp.val);
-            temp=temp.next;
+      // Define a priority queue (min-heap) where ListNodes are sorted by their values
+        PriorityQueue<ListNode> pq = new PriorityQueue<>((a, b) -> a.val - b.val);
+
+        // Add the head of each non-empty linked list to the priority queue
+        for (ListNode node : lists) {
+            if (node != null) {
+                pq.offer(node);
+            }
         }
-       }
-       Collections.sort(x);
-       ListNode f=new ListNode(0);
-       ListNode t2=f;
-       for(int i:x)
-       {
-        ListNode m=new ListNode(i);
-        t2.next=m;
-        t2=t2.next;
-       }
-       return f.next; 
+
+        // Create a dummy node to simplify the process of creating the merged list
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
+
+        // Process the priority queue until it's empty
+        while (!pq.isEmpty()) {
+            // Extract the node with the smallest value from the queue
+            ListNode minNode = pq.poll();
+            current.next = minNode;
+            current = current.next;
+
+            // If the extracted node has a next node, add it to the queue
+            if (minNode.next != null) {
+                pq.offer(minNode.next);
+            }
+        }
+
+        // The merged list is pointed to by dummy.next
+        return dummy.next;
     } 
-    }
+}
+
