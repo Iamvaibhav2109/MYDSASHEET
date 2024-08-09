@@ -1,0 +1,32 @@
+/**
+ * Definition of Interval:
+ * public class Interval {
+ *     public int start, end;
+ *     public Interval(int start, int end) {
+ *         this.start = start;
+ *         this.end = end;
+ *     }
+ * }
+ */
+
+class Solution {
+    public int minMeetingRooms(List<Interval> intervals) {
+          if (intervals == null || intervals.size() == 0) {
+            return 0;
+        }
+        intervals.sort(Comparator.comparingInt(a -> a.start));
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        heap.add(intervals.get(0).end);
+         // Iterate over the remaining intervals
+        for (int i = 1; i < intervals.size(); i++) {
+            // If the room due to free up the earliest is free, remove it from the heap
+            if (intervals.get(i).start >= heap.peek()) {
+                heap.poll();
+            }
+
+            // Add the current meeting's end time to the heap
+            heap.add(intervals.get(i).end);
+        }
+        return heap.size();
+    }
+}
