@@ -14,8 +14,8 @@
  * }
  */
 class Solution {
-    private int i = 0;
-    private int p = 0;
+    private int i = 0;//keep track of preorder array
+    private int p = 0; //keep track of inorder array
 
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return build(preorder, inorder, Integer.MIN_VALUE);
