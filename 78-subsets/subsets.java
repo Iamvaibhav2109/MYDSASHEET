@@ -1,20 +1,17 @@
 class Solution {
-            List<List<Integer>> result;
     public List<List<Integer>> subsets(int[] nums) {
-        result = new ArrayList();
-        if(nums==null || nums.length==0) return result;
-        subset(nums,new ArrayList<Integer>(),0);
-        return result;
-    }
-    public void subset(int[]nums,ArrayList<Integer>temp,int index){
-        if(index>=nums.length){
-            result.add(new ArrayList<>(temp));
-            return;
-        }
-        temp.add(nums[index]);
-        subset(nums, temp, index+1);
-        temp.remove(temp.size()-1);
+    List<List<Integer>> list = new ArrayList<>();
+    Arrays.sort(nums);
+    backtrack(list, new ArrayList<>(), nums, 0);
+    return list;
+}
 
-        subset(nums, temp, index+1);
+private void backtrack(List<List<Integer>> list , List<Integer> tempList, int [] nums, int start){
+    list.add(new ArrayList<>(tempList));
+    for(int i = start; i < nums.length; i++){
+        tempList.add(nums[i]);
+        backtrack(list, tempList, nums, i + 1);
+        tempList.remove(tempList.size() - 1);
     }
+}       
 }
