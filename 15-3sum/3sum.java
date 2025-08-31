@@ -1,6 +1,7 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result=new ArrayList<>();
+        //used for avoid duplicates and use two pointer approach as
         Arrays.sort(nums);
 
         for(int i=0;i<nums.length;i++){
@@ -26,6 +27,8 @@ class Solution {
                     result.add(temp);
                     j++;
                     k--;
+                    // These two loops are to avoid duplicate triplet entry.
+                    //there could be duplicate elements around j and k that would give the same triplet multiple times
                     while(j<k && nums[j]==nums[j-1])
                         j++;
                      while(j<k && nums[k]==nums[k+1])
