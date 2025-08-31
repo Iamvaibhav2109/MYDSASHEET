@@ -9,6 +9,10 @@ class Solution {
         for (int end = 0; end < n; end++) {
             char ch = s.charAt(end);
             if (charIndexMap.containsKey(ch)) {
+                //This line makes sure the starting index of your current substring window moves 
+                //forward whenever a duplicate character is found.
+                //charIndexMap.get(ch) gives you the last index where this character appeared.
+                
                 start = Math.max(start, charIndexMap.get(ch) + 1);
             }
             charIndexMap.put(ch, end);
